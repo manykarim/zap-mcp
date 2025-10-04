@@ -1,0 +1,35 @@
+[project]
+name = "zap-mcp"
+version = "0.1.0"
+description = "OWASP ZAP MCP server"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Zap MCP", email = "maintainers@example.com"}]
+dependencies = [
+    "fastmcp>=2.2.0",
+    "python-owasp-zap-v2.4>=0.3.0",
+    "mcp-ui-server>=0.1.0",
+    "pydantic>=2.6.0",
+    "pydantic-settings>=2.1.0",
+    "httpx>=0.25.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.1",
+]
+
+[project.scripts]
+zap-mcp = "zap_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
